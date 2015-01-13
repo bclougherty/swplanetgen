@@ -112,8 +112,8 @@ func contains(s []int, e int) bool {
 }
 
 // GeneratePlanet puts all the pieces together
-func GeneratePlanet() (*Planet, error) {
-	db, err := sql.Open("mysql", "swplanetgen:sqplanetgen!pass@database.aseriesoftub.es/swplanetgen")
+func GeneratePlanet(dbConnectionString string) (*Planet, error) {
+	db, err := sql.Open("mysql", dbConnectionString)
 	if err != nil {
 		return nil, err
 	}
@@ -242,8 +242,8 @@ func GeneratePlanet() (*Planet, error) {
 }
 
 // IncompatibleConditions returns a human-readable version of the incompatibility map
-func IncompatibleConditions() ([]IncompatibilityDescription, error) {
-	db, err := sql.Open("mysql", "swplanetgen:sqplanetgen!pass@database.aseriesoftub.es/swplanetgen")
+func IncompatibleConditions(dbConnectionString string) ([]IncompatibilityDescription, error) {
+	db, err := sql.Open("mysql", dbConnectionString)
 	if err != nil {
 		return nil, err
 	}
